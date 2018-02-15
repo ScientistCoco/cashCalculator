@@ -1,0 +1,55 @@
+package com.example.court.moneycounter;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Initializing views
+        EditText fiveCent = (EditText)findViewById(R.id.fiveCent);
+
+        // Set text watcher listener
+        fiveCent.addTextChangedListener(fiveCentWatcher);
+    }
+
+    //Creating an object?
+    private final TextWatcher fiveCentWatcher = new TextWatcher(){
+        public void beforeTextChanged(CharSequence s, int start, int count, int after){
+        }
+        public void onTextChanged(CharSequence s, int start, int before, int count){
+        }
+        public void afterTextChanged(Editable s){
+            TextView fiveCentText = (TextView) findViewById(R.id.fiveCentResult);
+            // Second condition prevents the enter button from triggering and error
+            if(s.length() > 0 && s.toString().contains("\n") == false) {
+                fiveCentText.setText("$" + String.format("%.2f", fiveCentTotal()));
+            } else {
+                fiveCentText.setText(null);
+            }
+        }
+    };
+
+    // This method calculates the amount of the five cents
+    private Double fiveCentTotal(){
+        double fiveCentResult = 0.00;
+        // Get the view id of the five cent value the user typed in
+        final EditText fiveCent = (EditText)findViewById(R.id.fiveCent);
+
+        // Now calculate the result value
+        fiveCentResult = (Double.parseDouble(fiveCent.getText().toString()) * 0.05);
+
+        return fiveCentResult;
+    }
+    
+
+}
