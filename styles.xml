@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryDark">#388E3C</item>
+        <item name="colorAccent">#009688</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TotalValue" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:text">0.00</item>
+        <item name="android:textColorHint">@android:color/black</item>
+    </style>
+
+    <style name="InputBox" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:maxLines">1</item>
+        <item name="android:inputType">number</item>
+    </style>
+
+    <style name="denominationText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#1976D2</item>
+    </style>
+</resources>

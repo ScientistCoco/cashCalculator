@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.court.moneycounter.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/delete"
+            android:src="@drawable/delete"
+            android:layout_gravity="right"
+            android:layout_marginRight="28dp"
+            android:onClick="clearAll"
+            />
+    </android.support.v7.widget.Toolbar>
+        <LinearLayout
+            android:id="@+id/totalView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="#CFD8DC">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Total"
+                android:textColor="@android:color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/totalValue"
+                style="@style/TotalValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:hint="$0.00"
+                android:textColorHint="@android:color/black"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_toolbar"
+            android:layout_above="@id/totalView"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- -
+                <Code for the five cents/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.05"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/fiveCent"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="0.05"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/fiveCentResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the ten cents/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.10"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/tenCent"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="0.10"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/tenCentResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the twenty cents/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.20"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/twentyCent"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="0.20"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/twentyCentResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="$0.00" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the fifty cents/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.50"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/fiftyCent"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="0.50"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/fiftyCentResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the one dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/oneDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="1.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/oneDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the two dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/twoDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="2.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/twoDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the five dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/fiveDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="5.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/fiveDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the ten dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/tenDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="10.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/tenDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the twenty dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/twentyDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="20.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/twentyDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the fifty dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/fiftyDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="50.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/fiftyDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- -
+                <Code for the four dollar/>
+                <!- -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.00"
+                        style="@style/denominationText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="x" />
+
+                    <EditText
+                        android:id="@+id/fourDollar"
+                        style="@style/InputBox"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:hint="4.00"
+                        android:textAlignment="center"
+                        android:textColorHint="@android:color/transparent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="=" />
+
+                    <TextView
+                        android:id="@+id/fourDollarResult"
+                        style="@style/TotalValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+</RelativeLayout>
